@@ -1,0 +1,10 @@
+{"apitesting":
+{"student_unknown":["GET","/api/unknown"],
+  "student_unknown2":["GET","/api/unknown/2"],
+  "users":["POST","/api/users/"]
+},
+  "payload":
+  {
+  "users":{"name":"morpheus","job":"leader"}
+  }
+}
