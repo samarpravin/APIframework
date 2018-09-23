@@ -1,10 +1,14 @@
 import json
+import os
 
 from LIB.Apitesting import Apitesting
 
-with open("C:\Users\pravins\PycharmProjects\TestingExplanationProject\CONFIG\APICONFIG", "r+") as pk:
-    config_json = json.load(pk)
-    print config_json
+fileDir = os.path.dirname(os.path.realpath('__file__'))
+print fileDir
+filename = os.path.join(fileDir, '../CONFIG/APICONFIG.json')
+with open(filename,"r") as f:
+    config_json = json.load(f)
+
     
 class ApiFunction(Apitesting):
 
@@ -18,34 +22,30 @@ class ApiFunction(Apitesting):
                 v.append(config_json["payload"][k])
 
 
-        print api_list
         return api_list
 
     def get_all_api_response(self, api_list):
         failed_apis = []
         try:
             headers = None
-            # print headers
 
             for apis, value in api_list.items():
                 api_type, uri = value[0], "https://reqres.in"+value[1]
                 print "calling api type {} and uri {}".format(api_type, uri)
                 body = value[2] if len(value) > 2 else None
 
-
-                status = self.ApiResponseCode(api_type, uri, json.dumps(body))
-                response = self.ApiStatusCode(api_type, uri, json.dumps(body))
+                response = self.ApiResponseCode(api_type, uri, json.dumps(body))
+                status = self.ApiStatusCode(api_type, uri, json.dumps(body))
                 print response
                 print status
                 if status != 200:
                     failed_apis.append(uri)
-
-
-
+            if failed_apis:
+                print "failed api {}".format(failed_apis)
+                raise Exception
 
 
         except Exception, e:
-
             raise Exception(e)
         return failed_apis
 
@@ -55,4 +55,3 @@ res = c.append_post_method_api_list()
 print res
 c.get_all_api_response(res)
 
-help(json)

@@ -1,7 +1,7 @@
 import requests
 import json
 
-with open("C:\Users\pravins\PycharmProjects\TestingExplanationProject\CONFIG\APICONFIG", "r+") as pk:
+with open("C:\Users\pravin\PycharmProjects\APIframework\CONFIG\APICONFIG.json", "r+") as pk:
     config_json = json.load(pk)
     print config_json
 
