@@ -24,11 +24,11 @@ class ApiFunction(Apitesting):
 
         return api_list
 
-    def get_all_api_response(self, api_list):
+    def get_all_api_response(self):
         failed_apis = []
         try:
             headers = None
-
+            api_list = self.append_post_method_api_list()
             for apis, value in api_list.items():
                 api_type, uri = value[0], "https://reqres.in"+value[1]
                 print "calling api type {} and uri {}".format(api_type, uri)
@@ -50,8 +50,28 @@ class ApiFunction(Apitesting):
         return failed_apis
 
 
+    def call_specific_api(self,apiName):
+        try:
+            headers = None
+            api_list = self.append_post_method_api_list()
+            value = api_list[apiName]
+            api_type, uri = value[0], "https://reqres.in" + value[1]
+            print "calling api type {} and uri {}".format(api_type, uri)
+            body = value[2] if len(value) > 2 else None
+            response = self.ApiResponseCode(api_type, uri, json.dumps(body))
+            status = self.ApiStatusCode(api_type, uri, json.dumps(body))
+            print response
+            print status
+            if status != 200:
+               print "api failed"
+               raise Exception
+        except Exception, e:
+            raise Exception(e)
+
+
+
+
 c = ApiFunction()
-res = c.append_post_method_api_list()
-print res
-c.get_all_api_response(res)
+# c.get_all_api_response()
+c.call_specific_api("registersuccess")
 
