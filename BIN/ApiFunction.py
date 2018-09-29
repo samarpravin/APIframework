@@ -1,11 +1,11 @@
 import json
 import os
-fileDir = os.path.dirname(os.path.realpath('__file__'))
-print fileDir
+basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print basedir
 
 from LIB.Apitesting import Apitesting
 
-filename = os.path.join(fileDir, '../CONFIG/APICONFIG.json')
+filename = os.path.join(basedir + '\\CONFIG\\APICONFIG.json')
 with open(filename,"r") as f:
     config_json = json.load(f)
 
