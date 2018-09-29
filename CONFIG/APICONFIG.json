@@ -10,7 +10,7 @@
   "registerunsuccess":["POST","/api/register"],
   "loginsuccess":["POST","/api/login"],
   "loginunsuccess":["POST","/api/login"],
-  "users2_put":["PUT","/api/users/2"]
+    "users2_put":["PUT","/api/users/2"]
 
 
 },

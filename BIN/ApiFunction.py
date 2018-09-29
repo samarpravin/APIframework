@@ -1,13 +1,15 @@
 import json
 import os
+fileDir = os.path.dirname(os.path.realpath('__file__'))
+print fileDir
 
 from LIB.Apitesting import Apitesting
 
-fileDir = os.path.dirname(os.path.realpath('__file__'))
-print fileDir
 filename = os.path.join(fileDir, '../CONFIG/APICONFIG.json')
 with open(filename,"r") as f:
     config_json = json.load(f)
+
+
 
     
 class ApiFunction(Apitesting):
@@ -20,7 +22,6 @@ class ApiFunction(Apitesting):
         for k, v in api_list.items():
             if v[0] == "POST" or v[0] == "PUT":
                 v.append(config_json["payload"][k])
-
 
         return api_list
 
@@ -71,7 +72,8 @@ class ApiFunction(Apitesting):
 
 
 
-c = ApiFunction()
-# c.get_all_api_response()
-c.call_specific_api("registersuccess")
+# c = ApiFunction()
+# # c.get_all_api_response()
+# c.call_specific_api("registersuccess")
+
 

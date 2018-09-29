@@ -17,7 +17,7 @@ class Apitesting():
             statusCode = requests.get(url, headers=None).status_code
 
         elif apiType=="POST":
-            statusCode = requests.get(url, body,  headers=None).status_code
+            statusCode = requests.post(url, body,  headers=None).status_code
 
         elif apiType=="PUT":
             statusCode = requests.put(url, body,  headers=None).status_code
@@ -51,18 +51,18 @@ class Apitesting():
 
 
 
-    def ApiTesting(self):
-        url = "https://reqres.in/api/unknown"
-        response = requests.get(url,headers=None).json()
-        status_code = requests.get(url,headers=None).status_code
+    # def ApiTesting(self):
+    #     url = "https://reqres.in/api/unknown"
+    #     response = requests.get(url,headers=None).json()
+    #     status_code = requests.get(url,headers=None).status_code
+    #
+    #
+    #     print status_code
+    #     print response
 
 
-        print status_code
-        print response
 
-
-
-c=Apitesting()
-url = "https://reqres.in/api/users"
-c.ApiTesting()
-c.ApiStatusCode("GET",url,None)
+# c=Apitesting()
+# url = "https://reqres.in/api/users"
+# c.ApiTesting()
+# c.ApiStatusCode("GET",url,None)
