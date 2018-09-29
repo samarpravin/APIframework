@@ -1,4 +1,5 @@
 *** Settings ***
+Force Tags        APIAutomation
 Library           ../BIN/ApiFunction.py    WITH NAME    AC
 Library           ../LIB/Apitesting.py    WITH NAME    AT
 Library           requests
