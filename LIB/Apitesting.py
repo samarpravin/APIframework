@@ -1,9 +1,7 @@
 import requests
 import json
 
-with open("C:\Users\pravin\PycharmProjects\APIframework\CONFIG\APICONFIG.json", "r+") as pk:
-    config_json = json.load(pk)
-    print config_json
+
 
 #https://reqres.in/ ---- My url to refer for api
 
